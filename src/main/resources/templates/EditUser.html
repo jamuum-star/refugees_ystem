@@ -1,0 +1,73 @@
+
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <div th:replace="fragments/header :: head"></div>
+</head>
+<body>
+<div class="sidebar d-flex flex-column p-3">
+    <h4 class="text-white">Refugee System</h4>
+    <ul class="nav nav-pills flex-column mb-auto">
+        <li class="nav-item">
+            <a href="/" class="nav-link text-white">Home</a>
+        </li>
+        <li class="nav-item">
+            <a href="/refugees/register" class="nav-link text-white">Register</a>
+        </li>
+        <li class="nav-item">
+            <a href="/refugees/all" class="nav-link text-white">View</a>
+        </li>
+        <li class="nav-item">
+            <a href="/register" class="nav-link text-white">User Register</a>
+        </li>
+        <li class="nav-item">
+            <a href="/all" class="nav-link text-white">User View</a>
+        </li>
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" class="btn btn-info" value="Logout" />
+        </form>
+    </ul>
+    <hr>
+    <div class="footer">
+        <span class="text-black">&copy; EngSalim, 2024</span>
+    </div>
+</div>
+
+<div class="main-content">
+    <div class="container text-center">
+        <div class="container my-5 p-5" style="border: 1px solid black">
+            <h1>Edit User</h1>
+            <form class="col-md-4 offset-md-4" th:action="@{/edit/{id}(id=${user.id})}" method="post" th:object="${user}">
+                <div class="mb-3">
+                    <label class="form-label">User Id</label>
+                    <input type="text" class="form-control" name="id" th:value="${user.id}" readonly>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">User Name</label>
+                    <input type="text" class="form-control" name="username" th:value="${user.username}">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">User Password</label>
+                    <input type="password" class="form-control" name="password" th:value="${user.password}">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">User Mobile</label>
+                    <input type="text" class="form-control" name="phone" th:value="${user.phone}">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+        crossorigin="anonymous"></script>
+</body>
+</html>

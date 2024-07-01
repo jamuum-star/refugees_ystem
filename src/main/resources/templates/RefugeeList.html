@@ -1,0 +1,205 @@
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--&lt;!&ndash;    <div th:replace="fragments/header :: head"></div>&ndash;&gt;-->
+<!--    <th:block th:include="fragments/header :: head"></th:block>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="sidebar d-flex flex-column p-3">-->
+<!--    <h4 class="text-white">Refugee System</h4>-->
+<!--    <ul class="nav nav-pills flex-column mb-auto">-->
+<!--        <li class="nav-item">-->
+<!--            <a href="/" class="nav-link text-white">Home</a>-->
+<!--        </li>-->
+<!--        <li class="nav-item">-->
+<!--            <a href="/refugees/register" class="nav-link text-white">Register</a>-->
+<!--        </li>-->
+<!--        <li class="nav-item">-->
+<!--            <a href="/refugees/all" class="nav-link text-white">View</a>-->
+<!--        </li>-->
+<!--        <li class="nav-item">-->
+<!--            <a href="/register" class="nav-link text-white">User Register</a>-->
+<!--        </li>-->
+<!--        <li class="nav-item">-->
+<!--            <a href="/all" class="nav-link text-white">User View</a>-->
+<!--        </li>-->
+<!--        <form th:action="@{/logout}" method="post">-->
+<!--            <input type="submit" class="btn btn-info" value="Logout"/>-->
+<!--        </form>-->
+<!--    </ul>-->
+<!--    <hr>-->
+<!--    <div class="footer text-black">-->
+<!--        &copy; EngSalim, 2024-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--<div class="main-content">-->
+<!--    <div class="container-fluid">-->
+<!--        <div class="container text-center">-->
+<!--            <h1>Registered Refugees</h1>-->
+<!--            <form class="d-flex" role="search" method="get" th:action="@{/all}">-->
+<!--                <input class="form-control me-2" type="text" name="keyword" id="keyword" th:value="${keyword}" placeholder="Search">-->
+<!--                <button class="btn btn-outline-success me-2" type="submit">Search</button>-->
+<!--                &lt;!&ndash;                    <input type="button" class="ml-4 btn btn-outline-primary" onclick="location.href='/'" value="Home" />&ndash;&gt;-->
+<!--                <input type="button" class="ml-4 btn btn-outline-warning text-black" value="clear" id="btn-clear" onclick="clearfunction()"/>-->
+<!--            </form>-->
+<!--            <table class="table table-striped table-bordered">-->
+<!--                <thead>-->
+<!--                <tr>-->
+<!--                    <th>Refugee Id</th>-->
+<!--                    <th>Full Name</th>-->
+<!--                    <th>Family Size</th>-->
+<!--                    <th>Contact</th>-->
+<!--                    <th>Address</th>-->
+<!--                    <th>Status</th>-->
+<!--                    <th>Actions</th>-->
+<!--                </tr>-->
+<!--                </thead>-->
+<!--                <tbody>-->
+<!--                <tr th:each="refugee : ${refugees}">-->
+<!--                    <td th:text="${refugee.id}"></td>-->
+<!--                    <td th:text="${refugee.fullname}"></td>-->
+<!--                    <td th:text="${refugee.familysize}"></td>-->
+<!--                    <td th:text="${refugee.phone}"></td>-->
+<!--                    <td th:text="${refugee.address}"></td>-->
+<!--                    <td th:text="${refugee.status}"></td>-->
+<!--                    <td>-->
+<!--                        <a th:href="@{/refugees/edit/{id}(id=${refugee.id})}" style="color:blue">-->
+<!--                            <i class="fa fa-lg fa-edit ms-4"></i>-->
+<!--                        </a>-->
+<!--                        <a th:href="@{/refugees/delete/{id}(id=${refugee.id})}" style="color:red">-->
+<!--                            <i class="fa fa-lg fa-trash ms-4"></i>-->
+<!--                        </a>-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                </tbody>-->
+<!--            </table>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"-->
+<!--        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"-->
+<!--        crossorigin="anonymous"></script>-->
+<!--<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"-->
+<!--        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"-->
+<!--        crossorigin="anonymous"></script>-->
+<!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"-->
+<!--        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"-->
+<!--        crossorigin="anonymous"></script>-->
+<!--<script type="text/javascript">-->
+<!--    function clearfunction(){-->
+<!--    window.location = "[[@{/all}]]";-->
+<!--    }-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Include the Thymeleaf fragment for the head section -->
+    <th:block th:include="fragments/header :: head"></th:block>
+</head>
+<body>
+<div class="sidebar d-flex flex-column p-3">
+    <h4 class="text-white">Refugee System</h4>
+    <ul class="nav nav-pills flex-column mb-auto">
+        <li class="nav-item">
+            <a href="/" class="nav-link text-white">Home</a>
+        </li>
+        <li class="nav-item">
+            <a href="/refugees/register" class="nav-link text-white">Register</a>
+        </li>
+        <li class="nav-item">
+            <a href="/refugee/all" class="nav-link text-white">View</a>
+        </li>
+        <li class="nav-item">
+            <a href="/register" class="nav-link text-white">User Register</a>
+        </li>
+        <li class="nav-item">
+            <a href="/all" class="nav-link text-white">User View</a>
+        </li>
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" class="btn btn-info" value="Logout"/>
+        </form>
+    </ul>
+    <hr>
+    <div class="footer text-black">
+        &copy; EngSalim, 2024
+    </div>
+</div>
+
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="container text-center">
+            <h1>Registered Refugees</h1>
+<!--            <form class="d-flex" role="search" method="get" th:action="@{/all}">-->
+            <form class="d-flex" role="search" method="get" th:action="@{/refugees/all}">
+                <input class="form-control me-2" type="text" name="mykeyword" id="mykeyword" th:value="${mykeyword}" placeholder="Search">
+                <button class="btn btn-outline-success me-2" type="submit">Search</button>
+                <input type="button" class="ml-4 btn btn-outline-warning text-black" value="Clear" id="btn-clear" onclick="clearsFunction()">
+            </form>
+            <table class="table table-striped table-bordered">
+                <thead>
+                <tr>
+                    <th>Refugee Id</th>
+                    <th>Full Name</th>
+                    <th>Family Size</th>
+                    <th>Contact</th>
+                    <th>Address</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="refugee : ${refugees}">
+                    <td th:text="${refugee.id}"></td>
+                    <td th:text="${refugee.fullname}"></td>
+                    <td th:text="${refugee.familysize}"></td>
+                    <td th:text="${refugee.phone}"></td>
+                    <td th:text="${refugee.address}"></td>
+                    <td th:text="${refugee.status}"></td>
+                    <td>
+                        <a th:href="@{/refugees/edit/{id}(id=${refugee.id})}" style="color:blue">
+                            <i class="fa fa-lg fa-edit ms-4"></i>
+                        </a>
+                        <a th:href="@{/refugees/delete/{id}(id=${refugee.id})}" style="color:red">
+                            <i class="fa fa-lg fa-trash ms-4"></i>
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div th:if="${refugees.size() == 0}">
+            <p>No Refugees found</p>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+        crossorigin="anonymous"></script>
+<!--<script type="text/javascript">-->
+<!--    function clearsFunction(){-->
+<!--        window.location = "[[@{/all}]]";-->
+<!--    }-->
+<!--</script>-->
+<script type="text/javascript">
+    function clearsFunction(){
+        window.location.href = "/refugees/all";
+    }
+</script>
+</body>
+</html>
