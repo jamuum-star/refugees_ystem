@@ -1,49 +1,82 @@
+
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="ISO-8859-1">
-  <title>Insert title here</title>
+  <meta charset="UTF-8">
+  <title>Login Page - Refugee Management System</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
-
+  <style>
+    body {
+      background-image: url('/image/refugee.jpg'); /* Replace with your background image path */
+      background-size: contain; /* Adjusted to 'contain' */
+      background-repeat: no-repeat;
+      background-position: left;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .login-container {
+      background: rgba(255, 255, 255, 0.9); /* White background with opacity */
+      padding: 50px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      width: 100%;
+      margin-left: 750px;
+    }
+    .login-header img {
+      width: 100%;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+    .login-title {
+      margin-top: 20px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 1.5em;
+      color: #333; /* Darker text color */
+    }
+    .login-form .form-group {
+      margin-bottom: 20px; /* Increase spacing between form elements */
+    }
+    .login-form .btn {
+      width: 100%;
+      background-color: #17a2b8; /* Bootstrap info color */
+      border-color: #17a2b8; /* Bootstrap info color */
+    }
+    .login-form .btn:hover {
+      background-color: #138496; /* Darker shade on hover */
+      border-color: #138496; /* Darker shade on hover */
+    }
+    .login-form label {
+      color: #666; /* Slightly darker label text color */
+    }
+    .login-form input[type="text"],
+    .login-form input[type="password"] {
+      border-radius: 5px; /* Rounded input fields */
+    }
+  </style>
 </head>
 <body>
-<div class="container">
-  <table width="100%" height="100%" border="0" cellpadding="0" align="center">
-    <tr>
-      <td align="center" valign="middle">
-        <table class="table-bordered" width="350" border="0" cellpadding="3"cellspacing="3" bgcolor="#ffffff">
-
-          <form action="#" th:action="@{/login}" th:object="${user}" method="post">
-
-
-            <tr>
-              <td height="25" colspan="2" align="left" valign="middle" bgcolor="#ffffff" class="style2">
-                <div align="center">
-                  <strong>Login</strong>
-                </div>
-
-              </td>
-            </tr>
-            <tr>
-              <td>Username</td>
-              <td>
-
-                <input type="text" th:field="*{username}" class="form-control" />
-              </td>
-            </tr>
-            <tr>
-              <td>Password</td>
-              <td><input type="password" th:field="*{password}" class="form-control" /></td>
-            </tr>
-            <tr>
-              <td colspan="2"><button type="submit" class="btn btn-info" align="right">Login</button> </td>
-            </tr>
-
-          </form>
-        </table>
-      </td>
-    </tr>
-  </table>
+<div class="container login-container" >
+  <div class="login-header">
+    <img th:src="@{/image/refugee.jpg}" alt="Refugee Image" />
+  </div>
+  <div class="login-title">Login to Refugee Management System</div>
+  <form th:action="@{/login}" th:object="${user}" method="post" class="login-form">
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" id="username" th:field="*{username}" class="form-control" placeholder="Enter username" />
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" th:field="*{password}" class="form-control" placeholder="Enter password" />
+    </div>
+    <button type="submit" class="btn btn-info">Login</button>
+  </form>
 </div>
 </body>
 </html>
+

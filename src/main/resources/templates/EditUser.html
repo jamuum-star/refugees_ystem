@@ -5,35 +5,9 @@
     <div th:replace="fragments/header :: head"></div>
 </head>
 <body>
-<div class="sidebar d-flex flex-column p-3">
-    <h4 class="text-white">Refugee System</h4>
-    <ul class="nav nav-pills flex-column mb-auto">
-        <li class="nav-item">
-            <a href="/" class="nav-link text-white">Home</a>
-        </li>
-        <li class="nav-item">
-            <a href="/refugees/register" class="nav-link text-white">Register</a>
-        </li>
-        <li class="nav-item">
-            <a href="/refugees/all" class="nav-link text-white">View</a>
-        </li>
-        <li class="nav-item">
-            <a href="/register" class="nav-link text-white">User Register</a>
-        </li>
-        <li class="nav-item">
-            <a href="/all" class="nav-link text-white">User View</a>
-        </li>
-        <form th:action="@{/logout}" method="post">
-            <input type="submit" class="btn btn-info" value="Logout" />
-        </form>
-    </ul>
-    <hr>
-    <div class="footer">
-        <span class="text-black">&copy; EngSalim, 2024</span>
-    </div>
-</div>
 
-<div class="main-content">
+<div th:replace="fragments/nav :: nav"></div>
+<div class="main-content" style="padding-left: 15vw;">
     <div class="container text-center">
         <div class="container my-5 p-5" style="border: 1px solid black">
             <h1>Edit User</h1>
