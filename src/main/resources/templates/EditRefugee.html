@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -8,32 +7,35 @@
 
 <div th:replace="fragments/nav :: nav"></div>
 
-<div class="main-content" style="padding-left: 15vw;">
-    <div class="container-fluid text-center">
+<div class="main-content" style="margin-left: 260px; padding: 20px;">
+    <div class="container text-center">
         <div class="container my-5 p-5" style="border: 1px solid black">
             <h1>Edit Refugee</h1>
-            <form class="col-md-4 offset-md-4" th:action="@{/refugees/edit/{id}(id=${refugee.id})}" method="post" th:object="${refugee}">
+            <form class="col-md-4 offset-md-4" th:action="@{/refugees/edit/{id}(id=${refugee.id})}" th:object="${refugee}" method="post">
                 <div class="mb-3">
                     <label class="form-label">Refugee Id</label>
-                    <input type="text" class="form-control" name="id" th:value="${refugee.id}" readonly>
+                    <input type="text" class="form-control" th:field="*{id}" readonly>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Full Name</label>
-                    <input type="text" class="form-control" name="fullname" th:value="${refugee.fullname}">
+                    <input type="text" class="form-control" th:field="*{fullname}">
+                    <div class="text-danger" th:if="${#fields.hasErrors('fullname')}" th:errors="*{fullname}"></div>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Family Size</label>
-                    <input type="text" class="form-control" name="familysize" th:value="${refugee.familysize}">
+                    <input type="number" class="form-control" th:field="*{familysize}">
+                    <div class="text-danger" th:if="${#fields.hasErrors('familysize')}" th:errors="*{familysize}"></div>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Contact</label>
-                    <input type="text" class="form-control" name="phone" th:value="${refugee.phone}">
+                    <input type="text" class="form-control" th:field="*{phone}">
+                    <div class="text-danger" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></div>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Address</label>
-                    <input type="text" class="form-control" name="address" th:value="${refugee.address}">
+                    <input type="text" class="form-control" th:field="*{address}">
+<!--                    <div class="text-danger" th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></div>-->
                 </div>
-
                 <div class="mb-3">
                     <label class="form-label">Status</label>
                     <select class="form-select" th:field="*{status}">
@@ -41,11 +43,8 @@
                         <option value="Asylum Seeker">Asylum Seeker</option>
                         <option value="Returner">Returner</option>
                     </select>
+<!--                    <div class="text-danger" th:if="${#fields.hasErrors('status')}" th:errors="*{status}"></div>-->
                 </div>
-
-
-
-
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>

@@ -7,27 +7,32 @@
 
 <div th:replace="fragments/nav :: nav"></div>
 
-<div class="main-content" style="padding-left: 15vw;">
+<div class="main-content" style="margin-left: 260px; padding: 20px;">
 
     <div class="container text-center">
             <div class="container my-5 p-5" style="border: 1px solid black">
                 <h1>Register User</h1>
-                <form class="col-md-4 offset-md-4" th:action="@{/save}" method="post">
-                    <!--                <div class="mb-3">-->
-                    <!--                    <label class="form-label">User Id</label>-->
-                    <!--                    <input type="text" class="form-control" name="id">-->
-                    <!--                </div>-->
+                <form class="col-md-4 offset-md-4" th:action="@{/save}" th:object="${user}" method="post">
+
                     <div class="mb-3">
                         <label class="form-label">User Name</label>
-                        <input type="text" class="form-control" name="username">
+                        <input type="text" class="form-control" th:field="*{username}">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">User Password</label>
-                        <input type="password" class="form-control" name="password">
+                        <input type="password" class="form-control" th:field="*{password}">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Role</label>
+                        <select class="form-select" th:field="*{role}">
+                            <option value="Admin">Admin</option>
+                            <option value="User">User</option>
+
+                        </select>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">User Mobile</label>
-                        <input type="text" class="form-control" name="phone">
+                        <input type="text" class="form-control" th:field="*{phone}" pattern="\d{9}" title="Phone number must be 9 digits long" required>
                     </div>
                     <button type="submit" class="btn btn-success">Submit</button>
                 </form>

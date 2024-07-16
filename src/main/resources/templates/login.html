@@ -27,9 +27,10 @@
       margin-left: 750px;
     }
     .login-header img {
-      width: 100%;
-      border-top-left-radius: 10px;
-      border-top-right-radius: 10px;
+      width: 40%;
+      margin-left: 90px;
+      border-top-left-radius: 50px;
+      border-top-right-radius: 50px;
     }
     .login-title {
       margin-top: 20px;
@@ -43,11 +44,11 @@
     }
     .login-form .btn {
       width: 100%;
-      background-color: #17a2b8; /* Bootstrap info color */
+      background-color: #339966; /* Bootstrap info color */
       border-color: #17a2b8; /* Bootstrap info color */
     }
     .login-form .btn:hover {
-      background-color: #138496; /* Darker shade on hover */
+      background-color: #339966; /* Darker shade on hover */
       border-color: #138496; /* Darker shade on hover */
     }
     .login-form label {
@@ -62,7 +63,7 @@
 <body>
 <div class="container login-container" >
   <div class="login-header">
-    <img th:src="@{/image/refugee.jpg}" alt="Refugee Image" />
+    <img th:src="@{/image/person.jpg}" alt="Refugee Image" />
   </div>
   <div class="login-title">Login to Refugee Management System</div>
   <form th:action="@{/login}" th:object="${user}" method="post" class="login-form">
@@ -74,7 +75,7 @@
       <label for="password">Password</label>
       <input type="password" id="password" th:field="*{password}" class="form-control" placeholder="Enter password" />
     </div>
-    <button type="submit" class="btn btn-info">Login</button>
+    <button type="submit" class="btn btn-success">Login</button>
   </form>
 </div>
 </body>

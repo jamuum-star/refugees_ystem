@@ -7,26 +7,34 @@
 <body>
 
 <div th:replace="fragments/nav :: nav"></div>
-<div class="main-content" style="padding-left: 15vw;">
+<div class="main-content" style="margin-left: 260px; padding: 20px;">
     <div class="container text-center">
         <div class="container my-5 p-5" style="border: 1px solid black">
             <h1>Edit User</h1>
-            <form class="col-md-4 offset-md-4" th:action="@{/edit/{id}(id=${user.id})}" method="post" th:object="${user}">
+            <form class="col-md-4 offset-md-4" th:action="@{/edit/{id}(id=${user.id})}" th:object="${user}"  method="post">
                 <div class="mb-3">
-                    <label class="form-label">User Id</label>
-                    <input type="text" class="form-control" name="id" th:value="${user.id}" readonly>
+                    <label class="form-label">user Id</label>
+                    <input type="text" class="form-control" th:field="*{id}" readonly>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">User Name</label>
-                    <input type="text" class="form-control" name="username" th:value="${user.username}">
+                    <input type="text" class="form-control" name="username" th:field="*{username}">
                 </div>
                 <div class="mb-3">
                     <label class="form-label">User Password</label>
                     <input type="password" class="form-control" name="password" th:value="${user.password}">
                 </div>
                 <div class="mb-3">
+                    <label class="form-label">Role</label>
+                    <select class="form-select" th:field="*{role}">
+                        <option value="Admin">Admin</option>
+                        <option value="User">User</option>
+
+                    </select>
+                </div>
+                <div class="mb-3">
                     <label class="form-label">User Mobile</label>
-                    <input type="text" class="form-control" name="phone" th:value="${user.phone}">
+                    <input type="text" class="form-control" name="phone" th:field="*{phone}">
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
